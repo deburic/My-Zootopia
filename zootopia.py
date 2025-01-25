@@ -18,6 +18,7 @@ def load_data(filepath):
     except FileNotFoundError as f:
         print(f"Error (File not found): {f}")
 
+
 def read_animal_info(data):
     '''
     Read the animal info from animals_data.json
@@ -28,13 +29,15 @@ def read_animal_info(data):
         try:
             name, taxonomy, locations, characteristics = info.values()
             animal_info += (f"\n")
-            animal_info += (f"Name: {name}\n")
-            animal_info += (f"Diet: {characteristics['diet']} \n")
-            animal_info += (f"Location: {locations[0]} \n")
-            animal_info += (f"Type: {characteristics['type']} \n")
+            animal_info += f'<li class="cards__item">\n'
+            animal_info += (f"Name: {name}<br/>\n")
+            animal_info += (f"Diet: {characteristics['diet']}<br/>\n")
+            animal_info += (f"Location: {locations[0]}<br/>\n")
+            animal_info += (f"Type: {characteristics['type']}<br/>\n")
+            animal_info += "</li>\n"
         except KeyError as k:
+            animal_info += "</li>\n"
             continue
-
     return animal_info
 
 def read_template(path):
